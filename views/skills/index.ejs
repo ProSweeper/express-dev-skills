@@ -18,12 +18,12 @@
         </thead>
         <tbody>
             <!-- use flounders here since we dont want this to print to page -->
-            <% skills.forEach((skill) { %> 
+            <% skills.forEach(function(skill) { %> 
                 <tr>
                     <td>
-                        <a href="/skills/<%=skill.id%>">skill.skill</a>
+                        <a href="/skills/<%=skill.id%>"><%= skill.skill %></a>
                     </td>
-                    <td>skill.proficientcy</td>
+                    <td><%= skill.proficientcy %></td>
                 </tr>
             <% }); %>
         </tbody>
