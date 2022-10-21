@@ -3,6 +3,7 @@ const Skill = require('../models/skill');
 module.exports = {
     index,
     show,
+    new: newSkill,
 }
 
 // respond to request asking for the whole data set
@@ -13,7 +14,8 @@ function index(req, res) {
         // the render function has 2 params the path and an object
         // the value of the object we want to render is recieved from our model
         // function we imported into this module
-        skills: Skill.getAll()
+        skills: Skill.getAll(),
+        title: 'All Skills',
     });
 }
 
@@ -24,6 +26,13 @@ function show(req, res) {
     res.render('skills/show', {
         // the request object has a parameters property which we can get the id from
         // we call this one skill because we are only retunring a singular entry
-        skill: Skill.getOne(req.params.id)
+        skill: Skill.getOne(req.params.id),
+        title: 'Skill Details',
+    });
+}
+
+function newSkill(req, res) {
+    res.render('skills/new',{
+        title: 'New Skill',
     });
 }
