@@ -4,6 +4,8 @@ module.exports = {
     index,
     show,
     new: newSkill,
+    create,
+    delete: deleteSkill,
 }
 
 // respond to request asking for the whole data set
@@ -35,4 +37,23 @@ function newSkill(req, res) {
     res.render('skills/new',{
         title: 'New Skill',
     });
+}
+
+function create(req, res) {
+    // get the skill object we imported from the model 
+    // our info will be in the req.body of the post request send
+    // from the form
+    Skill.create(req.body);
+    // always do a redirect when changing data
+    // remeber the / infront of the path, all redirects need it
+    res.redirect('/skills');
+}
+
+function deleteSkill(req, res) {
+    // use the imported skill object to delete the entry from the model
+    // the req.params.id correlates to the route param in the routes
+    // module - router.delete('/:id', skillsCtrl.delete)
+    Skill.deleteOne(req.params.id);
+    // we changed data so a redirect is needed, remember the leading /
+    res.redirect('/skills');
 }

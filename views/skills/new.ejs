@@ -1,0 +1,13 @@
+<%- include('../partials/header') %>
+    <!-- we want this form to send a post request to /skills -->
+    <form action="/skills" method="POST">
+        <!-- name attribute is what the server + middleware will see -->
+        <!-- we need it to match the name in the model -->
+        <input type="text" name="skill"> <br>
+        <label>
+            <!-- name corresponds to the object key in the model -->
+            <span>Proficiency: </span><input type="range" name="proficientcy" id="" min="1" max="5" value="1">
+        </label><br>
+        <button type="submit">Add Skill</button>
+    </form>
+<%- include('../partials/footer') %>

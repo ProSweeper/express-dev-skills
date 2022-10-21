@@ -3,6 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var methodOverride = require('method-override');
 
 var indexRouter = require('./routes/index');
 var skillsRouter = require('./routes/skills');
@@ -18,6 +19,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+// wants to know the name of the query parameter (in the url)
+// a query param is a way to pass extra info to the server from using
+// the url but it does not change the path
+app.use(methodOverride('_method'));
+
 
 app.use('/', indexRouter);
 app.use('/skills', skillsRouter);

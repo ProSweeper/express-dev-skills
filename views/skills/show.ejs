@@ -1,4 +1,16 @@
 <%- include('../partials/header') %>
     <h3><%= skill.skill %></h3>
     <h3>Proficiency: <%= skill.proficientcy %></h3>
+    <!-- the action is what will be appended on the url in the -->
+    <!-- request this form sends out -->
+    <!-- we add the query param the method-override middleware -->
+    <!-- will be looking for inside the action -->
+    <!-- this will change the HTTP method from POST to DELETE -->
+    <form 
+        action="/skills/<%= skill.id %>?_method=DELETE" 
+        method="POST"
+        class="delete-form"
+    >
+    <button type="submit">Remove Skill</button>
+  </form>
 <%- include('../partials/footer') %>
